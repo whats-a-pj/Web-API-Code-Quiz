@@ -2,10 +2,10 @@
 var startBtn = document.querySelector("#start");
 
 //empty arrays based on user input
-var userAnswers = [];
+var userAnswers = [""];
 
 // questions and answers written as an array of objects
-var allQuestions = [ 
+var quizContents = [ 
     {
         question: "What does a .querySelector do?",
         choices: [ "Selects a question on the page", "Selects a specific element of an html file", "Selects every question on an html file", "Selects a specific element of a Javascript file"],
@@ -33,9 +33,11 @@ var allQuestions = [
     }
 ];
 
-var correctAnswers = [allQuestions[0].answer, allQuestions[1].answer, allQuestions[2].answer, allQuestions[3].answer, allQuestions[4].answer];
+var allQuestions = [quizContents[0].question, quizContents[1].question, quizContents[2].question, quizContents[3].question, quizContents[4].question];
+var correctAnswers = [quizContents[0].answer, quizContents[1].answer, quizContents[2].answer, quizContents[3].answer, quizContents[4].answer];
+//var score = correctAnswers
 
-var timer = document.querySelector(".time")
+var timer = document.querySelector(".timer")
 var secondsLeft = 60;
 
 function countDown() {
@@ -44,46 +46,58 @@ var timerInterval = setInterval(function() {
     timer.textContent = secondsLeft;
         if(secondsLeft === 0) {
         clearInterval(timerInterval);
+        } else if (userAnswers !== correctAnswers[""])
+        {
+            secondsLeft = secondsLeft -5;
         }
     }, 1000);
 }
 
-/*for (var i = 0; i < question.length; i++) {
-    var score = allQuestions[i];
-    if (userAnswers === correctAnswers[""]) {
-        //add a function to run next question
-
+var renderQuestions = function() {
+    var replaceContent = function() {
+        var oldContent = document.getElementsByClassName(".content2");
+        var newContent = document.createElement(allQuestions[0], "h2");
+        oldContent.replaceChildren(newContent, oldContent)
+        newContent.textContent = allQuestions[i];
+        document.appendChild(newContent);
     }
-    
-}*/
-
-var renderQuestion = function() {
-    var questionBox = document.querySelector("#questions");
-    questionBox.textContent = allQuestions[0].question;
-    var optionOne = document.querySelector("#answers1");
-    optionOne.textContent = allQuestions[0].choices[0];
-    var optionTwo = document.querySelector("#answers2");
-    optionTwo.textContent = allQuestions[0].choices[1];
-    var optionThree = document.querySelector("#answers3");
-    optionThree.textContent = allQuestions[0].choices[2];
-    var optionFour = document.querySelector("#answers4");
-    optionFour.textContent = allQuestions[0].choices[3];
+    replaceContent();
+        //replaceContent = document.replaceChildren(".content2", "h2")
+        //replaceContent.appendChild(allQuestions[0])
+    //currentQuestion.textContent = allQuestions[0]
+    //var currentAnswers = 
     countDown();
-    if (userAnswers === correctAnswers[0]) {
-        //add score and run next question
-    } else if (userAnswers !== correctAnswers[0]) {
-        secondsLeft = secondsLeft -5;
-        //add nothing to score; 
-        //run next question;
-        //timeRemaining = timeRemaining -5;
-    }
-    //start timer function
 };
 
-var userScore = 
+/*var renderQuestions = function() {
+    var questionBox = document.querySelector("#questions");
+    questionBox.textContent = quizContents[0].question;
+    var optionOne = document.querySelector("#answers1");
+    optionOne.textContent = quizContents[0].choices[0];
+    var optionTwo = document.querySelector("#answers2");
+    optionTwo.textContent = quizContents[0].choices[1];
+    var optionThree = document.querySelector("#answers3");
+    optionThree.textContent = quizContents[0].choices[2];
+    var optionFour = document.querySelector("#answers4");
+    optionFour.textContent = quizContents[0].choices[3];
+    countDown();
+    for (var i = 0; i < quizContents.length; i++) {
+        //var userScore = quizContents[i];
+        if (userAnswers === correctAnswers[i]) {
+            //add a function to run next question
+            //add local storage variable here
+        } else if (userAnswers !== correctAnswers[0]) {
+        }   //don't add to local storage
+    }
+};*/
 
-startBtn.addEventListener("click", renderQuestion);
+startBtn.addEventListener("click", renderQuestions);
 
+
+// var renderQuestions = function() {
+// var clearContainer = document.replaceChildren(".content2")
+// clearContainer.createElement("h2" + clearContainer.textContent + allQuestions[0].question);
+// };
 
 
 /*var secondQ = function() {
