@@ -1,5 +1,27 @@
-//selecting the start button on html file
+// var body = document.body;
+// var h1El = document.createElement("h1");
+// var h2El = document.createElement("h2");
+// var pTimer = document.createElement("p");
+// var startBtn = document.createElement("button");
+
+// h1El.textContent = "Web API Coding Quiz";
+// h2El.textContent = "Begin Quiz?";
+// startBtn.textContent = "Start";
+// //pTimer.textContent = "timer function() set attribute "
+
+// body.appendChild(h1El);
+// body.appendChild(h2El);
+// body.appendChild(startBtn);
+// //body.appendChild(pTimer);
+
+// h2El.setAttribute("id", "questions");
+// startBtn.setAttribute("id", "start");
+//pTimer.setAttribute("style", "text-align:right;", "class", "timer;")
+
 var startBtn = document.querySelector("#start");
+
+//selecting the start button on html file
+//var startBtn = document.querySelector("#start");
 
 //empty arrays based on user input
 var userAnswers = [""];
@@ -41,6 +63,7 @@ var timer = document.querySelector(".timer")
 var secondsLeft = 60;
 
 function countDown() {
+    //body.appendChild(pTimer);
 var timerInterval = setInterval(function() {
     secondsLeft--;
     timer.textContent = secondsLeft;
@@ -53,23 +76,33 @@ var timerInterval = setInterval(function() {
     }, 1000);
 }
 
-var renderQuestions = function() {
-    var replaceContent = function() {
-        var oldContent = document.getElementsByClassName(".content2");
-        var newContent = document.createElement(allQuestions[0], "h2");
-        oldContent.replaceChildren(newContent, oldContent)
-        newContent.textContent = allQuestions[i];
-        document.appendChild(newContent);
-    }
-    replaceContent();
-        //replaceContent = document.replaceChildren(".content2", "h2")
-        //replaceContent.appendChild(allQuestions[0])
-    //currentQuestion.textContent = allQuestions[0]
-    //var currentAnswers = 
-    countDown();
-};
+// var renderQuestions = function() {
+// var clearContainer = document.replaceChildren(".content2")
+// clearContainer.createElement("h2" + clearContainer.textContent + allQuestions[0].question);
+// };
 
-/*var renderQuestions = function() {
+// var renderQuestions = function() {
+    
+//     countDown();
+// }
+
+// var renderQuestions = function() {
+//     var replaceContent = function() {
+//         var oldContent = document.getElementsByClassName(".content2");
+//         var newContent = document.createElement(allQuestions[0], "h2");
+//         oldContent.replaceChildren(newContent, oldContent)
+//         newContent.textContent = allQuestions[i];
+//         document.appendChild(newContent);
+//     }
+//     replaceContent();
+//         //replaceContent = document.replaceChildren(".content2", "h2")
+//         //replaceContent.appendChild(allQuestions[0])
+//     //currentQuestion.textContent = allQuestions[0]
+//     //var currentAnswers = 
+//     countDown();
+// };
+
+var renderQuestions = function() {
     var questionBox = document.querySelector("#questions");
     questionBox.textContent = quizContents[0].question;
     var optionOne = document.querySelector("#answers1");
@@ -82,22 +115,18 @@ var renderQuestions = function() {
     optionFour.textContent = quizContents[0].choices[3];
     countDown();
     for (var i = 0; i < quizContents.length; i++) {
-        //var userScore = quizContents[i];
+         //var userScore = quizContents[i];
         if (userAnswers === correctAnswers[i]) {
-            //add a function to run next question
-            //add local storage variable here
+             //add a function to run next question
+             //add local storage variable here
         } else if (userAnswers !== correctAnswers[0]) {
-        }   //don't add to local storage
+         }   //don't add to local storage
     }
-};*/
+};
 
 startBtn.addEventListener("click", renderQuestions);
 
 
-// var renderQuestions = function() {
-// var clearContainer = document.replaceChildren(".content2")
-// clearContainer.createElement("h2" + clearContainer.textContent + allQuestions[0].question);
-// };
 
 
 /*var secondQ = function() {
