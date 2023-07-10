@@ -1,7 +1,7 @@
 // var body = document.body;
 // var h1El = document.createElement("h1");
 // var h2El = document.createElement("h2");
-// var pTimer = document.createElement("p");
+// //var pTimer = document.createElement("p");
 // var startBtn = document.createElement("button");
 
 // h1El.textContent = "Web API Coding Quiz";
@@ -18,10 +18,8 @@
 // startBtn.setAttribute("id", "start");
 //pTimer.setAttribute("style", "text-align:right;", "class", "timer;")
 
-var startBtn = document.querySelector("#start");
-
 //selecting the start button on html file
-//var startBtn = document.querySelector("#start");
+var startBtn = document.querySelector("#start");
 
 //empty arrays based on user input
 var userAnswers = [""];
@@ -57,6 +55,9 @@ var quizContents = [
 
 var allQuestions = [quizContents[0].question, quizContents[1].question, quizContents[2].question, quizContents[3].question, quizContents[4].question];
 var correctAnswers = [quizContents[0].answer, quizContents[1].answer, quizContents[2].answer, quizContents[3].answer, quizContents[4].answer];
+
+var currentQuestion = 0;
+
 //var score = correctAnswers
 
 var timer = document.querySelector(".timer")
@@ -75,6 +76,46 @@ var timerInterval = setInterval(function() {
         }
     }, 1000);
 }
+
+var replaceContent = function() {
+    if (startBtn === "click") {
+        var questionBox = document.replaceChildren(".content2", "h1")
+        ????????????????????????????????????????????????????????????
+    }
+}
+//todo replace .content2 with lines 24-30 in html file and set attributes for ids
+//todo add event listeners to buttons to prompt the next set of questions- somehow :(
+    //var nextQuestion = function {} ??? more for loops??? idfk
+
+var renderQuestions = function() {
+    var questionBox = document.querySelector("#questions");
+    var optionOne = document.querySelector("#answers1");
+    var optionTwo = document.querySelector("#answers2");
+    var optionThree = document.querySelector("#answers3");
+    var optionFour = document.querySelector("#answers4");
+    countDown();
+    for (var i = 0; i < quizContents.length; i++) {
+        questionBox.textContent = quizContents[currentQuestion].question[0];
+        questionBox.textContent = quizContents[currentQuestion].question[1];
+        questionBox.textContent = quizContents[currentQuestion].question[2];
+        questionBox.textContent = quizContents[currentQuestion].question[3];
+        questionBox.textContent = quizContents[currentQuestion].question[4];
+    }
+    for (let i = 0; i < quizContents.length; i++) {
+        optionOne.textContent = quizContents[currentQuestion].choices[0];
+        optionTwo.textContent = quizContents[currentQuestion].choices[1];
+        optionThree.textContent = quizContents[currentQuestion].choices[2];
+        optionFour.textContent = quizContents[currentQuestion].choices[3];
+    }
+};
+
+startBtn.addEventListener("click", renderQuestions);
+
+//questionBox.textContent = quizContents[0].question;
+//optionOne.textContent = quizContents[0].choices[0];
+//optionTwo.textContent = quizContents[0].choices[1];
+//optionThree.textContent = quizContents[0].choices[2];
+//optionFour.textContent = quizContents[0].choices[3];
 
 // var renderQuestions = function() {
 // var clearContainer = document.replaceChildren(".content2")
@@ -102,33 +143,12 @@ var timerInterval = setInterval(function() {
 //     countDown();
 // };
 
-var renderQuestions = function() {
-    var questionBox = document.querySelector("#questions");
-    questionBox.textContent = quizContents[0].question;
-    var optionOne = document.querySelector("#answers1");
-    optionOne.textContent = quizContents[0].choices[0];
-    var optionTwo = document.querySelector("#answers2");
-    optionTwo.textContent = quizContents[0].choices[1];
-    var optionThree = document.querySelector("#answers3");
-    optionThree.textContent = quizContents[0].choices[2];
-    var optionFour = document.querySelector("#answers4");
-    optionFour.textContent = quizContents[0].choices[3];
-    countDown();
-    for (var i = 0; i < quizContents.length; i++) {
-         //var userScore = quizContents[i];
-        if (userAnswers === correctAnswers[i]) {
-             //add a function to run next question
-             //add local storage variable here
-        } else if (userAnswers !== correctAnswers[0]) {
-         }   //don't add to local storage
-    }
-};
-
-startBtn.addEventListener("click", renderQuestions);
-
-
-
-
+//  //var userScore = quizContents[i];
+//  if (userAnswers === correctAnswers[i]) {
+//     //add a function to run next question
+//     //add local storage variable here
+// } else if (userAnswers !== correctAnswers[0]) {
+// }   //don't add to local storage
 /*var secondQ = function() {
     var questionBox = document.querySelector("#questions");
     questionBox.textContent = allQuestions[1].question;
