@@ -1,25 +1,17 @@
-// var body = document.body;
-// var h1El = document.createElement("h1");
-// var h2El = document.createElement("h2");
-// //var pTimer = document.createElement("p");
-// var startBtn = document.createElement("button");
-
-// h1El.textContent = "Web API Coding Quiz";
-// h2El.textContent = "Begin Quiz?";
-// startBtn.textContent = "Start";
-// //pTimer.textContent = "timer function() set attribute "
-
-// body.appendChild(h1El);
-// body.appendChild(h2El);
-// body.appendChild(startBtn);
-// //body.appendChild(pTimer);
-
-// h2El.setAttribute("id", "questions");
-// startBtn.setAttribute("id", "start");
-//pTimer.setAttribute("style", "text-align:right;", "class", "timer;")
-
 //selecting the start button on html file
 var startBtn = document.querySelector("#start");
+
+//hides quiz-area until user clicks start
+
+// var quizBtnHide = function() {
+//     document.getElementsByClassName(".quiz-btn").style.visibility = "hide";
+// };
+
+// quizBtnHide();
+
+// var quizBtnShow = function() {
+//     document.getElementsByClassName(".quiz-btn").style.visibility = "visible";
+// }
 
 //empty arrays based on user input
 var userAnswers = [""];
@@ -53,18 +45,12 @@ var quizContents = [
     }
 ];
 
-var allQuestions = [quizContents[0].question, quizContents[1].question, quizContents[2].question, quizContents[3].question, quizContents[4].question];
-var correctAnswers = [quizContents[0].answer, quizContents[1].answer, quizContents[2].answer, quizContents[3].answer, quizContents[4].answer];
-
 var currentQuestion = 0;
 
-//var score = correctAnswers
-
-var timer = document.querySelector(".timer")
+var timer = document.querySelector(".timer");
 var secondsLeft = 60;
 
 function countDown() {
-    //body.appendChild(pTimer);
 var timerInterval = setInterval(function() {
     secondsLeft--;
     timer.textContent = secondsLeft;
@@ -75,17 +61,15 @@ var timerInterval = setInterval(function() {
             secondsLeft = secondsLeft -5;
         }
     }, 1000);
-}
+};
 
-var replaceContent = function() {
-    if (startBtn === "click") {
-        var questionBox = document.replaceChildren(".content2", "h1")
-        ????????????????????????????????????????????????????????????
-    }
-}
-//todo replace .content2 with lines 24-30 in html file and set attributes for ids
-//todo add event listeners to buttons to prompt the next set of questions- somehow :(
-    //var nextQuestion = function {} ??? more for loops??? idfk
+//todo create function that replaces .content2 with quizContents
+//todo call that function inside of renderQuestions upon clicking start
+// OR
+//todo .setAttributes to quiz-area elements as hidden until user clicks start- then visible
+//todo inside of the renderQuestions function, and hidden again when scoreboard populates
+
+//todo add scoreboard localStorage function after user has exhausted all questions
 
 var renderQuestions = function() {
     var questionBox = document.querySelector("#questions");
@@ -94,22 +78,90 @@ var renderQuestions = function() {
     var optionThree = document.querySelector("#answers3");
     var optionFour = document.querySelector("#answers4");
     countDown();
-    for (var i = 0; i < quizContents.length; i++) {
-        questionBox.textContent = quizContents[currentQuestion].question[0];
-        questionBox.textContent = quizContents[currentQuestion].question[1];
-        questionBox.textContent = quizContents[currentQuestion].question[2];
-        questionBox.textContent = quizContents[currentQuestion].question[3];
-        questionBox.textContent = quizContents[currentQuestion].question[4];
-    }
-    for (let i = 0; i < quizContents.length; i++) {
+        questionBox.textContent = quizContents[currentQuestion].question;
         optionOne.textContent = quizContents[currentQuestion].choices[0];
         optionTwo.textContent = quizContents[currentQuestion].choices[1];
         optionThree.textContent = quizContents[currentQuestion].choices[2];
         optionFour.textContent = quizContents[currentQuestion].choices[3];
-    }
+        var correctAnswer = quizContents[currentQuestion].answer;
+    optionOne.addEventListener("click", function() {
+        //if (correctAnswer !== 0) {
+//reduce timer here
+        //};
+        currentQuestion++;
+        renderQuestions();
+    });
+    optionTwo.addEventListener("click", function() {
+        //if (correctAnswer !== 0) {
+//reduce timer here
+        //};
+        currentQuestion++;
+        renderQuestions();
+    });
+    optionThree.addEventListener("click", function() {
+        //if (correctAnswer !== 0) {
+//reduce timer here
+        //};
+        currentQuestion++;
+        renderQuestions();
+    });
+    optionFour.addEventListener("click", function() {
+        //if (correctAnswer !== 0) {
+//reduce timer here
+        //};
+        currentQuestion++;
+        renderQuestions();
+    });
+    optionFive.addEventListener("click", function() {
+        //if (correctAnswer !== 0) {
+//reduce timer here
+        //};
+        //todo run a function here that will stop the quiz, add up correctAnswers and 
+        //todo prompt the scoreboard and user name input w/ localStorage
+    });
+    
 };
 
+var tempFunction = function() {
+    currentQuestion++;
+    renderQuestions();
+}
+
 startBtn.addEventListener("click", renderQuestions);
+
+
+// var allQuestions = [quizContents[0].question, quizContents[1].question, quizContents[2].question, quizContents[3].question, quizContents[4].question];
+// var correctAnswers = [quizContents[0].answer, quizContents[1].answer, quizContents[2].answer, quizContents[3].answer, quizContents[4].answer];
+
+
+    //for (var i = 0; i < quizContents.length; i++) {
+    //     questionBox.textContent = quizContents[currentQuestion].question[1];
+    //     questionBox.textContent = quizContents[currentQuestion].question[2];
+    //     questionBox.textContent = quizContents[currentQuestion].question[3];
+    //     questionBox.textContent = quizContents[currentQuestion].question[4];
+    // 
+    //for (let i = 0; i < quizContents.length; i++) {
+
+// var body = document.body;
+// var h1El = document.createElement("h1");
+// var h2El = document.createElement("h2");
+// //var pTimer = document.createElement("p");
+// var startBtn = document.createElement("button");
+
+// h1El.textContent = "Web API Coding Quiz";
+// h2El.textContent = "Begin Quiz?";
+// startBtn.textContent = "Start";
+// //pTimer.textContent = "timer function() set attribute "
+
+// body.appendChild(h1El);
+// body.appendChild(h2El);
+// body.appendChild(startBtn);
+// //body.appendChild(pTimer);
+
+// h2El.setAttribute("id", "questions");
+// startBtn.setAttribute("id", "start");
+//pTimer.setAttribute("style", "text-align:right;", "class", "timer;")
+
 
 //questionBox.textContent = quizContents[0].question;
 //optionOne.textContent = quizContents[0].choices[0];
