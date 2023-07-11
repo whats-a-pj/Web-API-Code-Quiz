@@ -1,16 +1,30 @@
 //selecting the start button on html file
 var startBtn = document.querySelector("#start");
 
+//selecting the submit button on html file
+var submitBtn = document.querySelector("#save-score");
+
 //hides quiz-area until user clicks start
 
-// var quizBtnHide = function() {
-//     document.getElementsByClassName(".quiz-btn").style.visibility = "hide";
+// var quizAreaHide = function() {
+    //
+    // var quizBtnHide = document.getElementsByClassName(".quiz-btn")
+    // quizBtnHide.setAttribute("display", "none");
+     //quizBtnHide = true;
+     // quizBtnHide.setAttribute("style", "display", "none");
+    // var quizQHide = document.getElementById("#questions")
+    // quizQHide.setAttribute("display", "none");
+//     quizQHide = true;
+//     // quizQHide.setAttribute("style", "display", "none");
 // };
 
-// quizBtnHide();
+// quizAreaHide();
 
-// var quizBtnShow = function() {
-//     document.getElementsByClassName(".quiz-btn").style.visibility = "visible";
+// var quizAreaShow = function() {
+//     var quizBtnShow = document.getElementsByClassName(".quiz-btn").hidden = false;
+//     // quizBtnShow.setAttribute("style", "display", "visible");
+//     var quizQShow = document.getElementById("#questions").hidden = false;
+//     // quizQShow.setAttribute("style", "display", "visible");
 // }
 
 //empty arrays based on user input
@@ -47,6 +61,8 @@ var quizContents = [
 
 var currentQuestion = 0;
 
+var score = 0;
+
 var timer = document.querySelector(".timer");
 var secondsLeft = 60;
 
@@ -54,14 +70,17 @@ function countDown() {
 var timerInterval = setInterval(function() {
     secondsLeft--;
     timer.textContent = secondsLeft;
-        if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-        } else if (userAnswers !== correctAnswers[""])
+        if(secondsLeft === 0) 
         {
-            secondsLeft = secondsLeft -5;
-        }
+        clearInterval(timerInterval);
+        } //else if (userAnswers !== correctAnswer)
+        //{
+            //secondsLeft = secondsLeft -5;
+        //}
     }, 1000);
 };
+
+
 
 //todo create function that replaces .content2 with quizContents
 //todo call that function inside of renderQuestions upon clicking start
@@ -69,9 +88,11 @@ var timerInterval = setInterval(function() {
 //todo .setAttributes to quiz-area elements as hidden until user clicks start- then visible
 //todo inside of the renderQuestions function, and hidden again when scoreboard populates
 
-//todo add scoreboard localStorage function after user has exhausted all questions
 
+//todo add scoreTracker() to each eventlistener conditional to add up correctAnswer
 var renderQuestions = function() {
+    // quizQHide.removeAttribute("display", "none");
+    // quizBtnHide.removeAttribute("display", "none");
     var questionBox = document.querySelector("#questions");
     var optionOne = document.querySelector("#answers1");
     var optionTwo = document.querySelector("#answers2");
@@ -85,257 +106,87 @@ var renderQuestions = function() {
         optionFour.textContent = quizContents[currentQuestion].choices[3];
         var correctAnswer = quizContents[currentQuestion].answer;
     optionOne.addEventListener("click", function() {
-        //if (correctAnswer !== 0) {
-//reduce timer here
-        //};
+        //todo for each eventListener
+        if (userAnswers === correctAnswer ) {
+            //add 20 to scoreTracker()
+            // OR
+            // score = score + 20;
+        }
+        // } else (userAnswers !== correctAnswer) {
+            //don't add to scoreTracker(), but -5 seconds 
+            //secondsLeft = secondsLeft -5; ??
+        // }
         currentQuestion++;
         renderQuestions();
+        //scoreTracker();
     });
     optionTwo.addEventListener("click", function() {
-        //if (correctAnswer !== 0) {
-//reduce timer here
-        //};
+        if (userAnswers === correctAnswer ) {
+            //add 20 to scoreTracker()
+            // OR
+            // score = score + 20;
+        }
         currentQuestion++;
         renderQuestions();
+        //scoreTracker();
     });
     optionThree.addEventListener("click", function() {
-        //if (correctAnswer !== 0) {
-//reduce timer here
-        //};
+        if (userAnswers === correctAnswer ) {
+            //add 20 to scoreTracker()
+            // OR
+            // score = score + 20;
+        }
         currentQuestion++;
         renderQuestions();
+        //scoreTracker();
     });
     optionFour.addEventListener("click", function() {
-        //if (correctAnswer !== 0) {
-//reduce timer here
-        //};
+        if (userAnswers === correctAnswer ) {
+            //add 20 to scoreTracker()
+            // OR
+            // score = score + 20;
+        }
         currentQuestion++;
         renderQuestions();
+        //scoreTracker();
     });
     optionFive.addEventListener("click", function() {
-        //if (correctAnswer !== 0) {
-//reduce timer here
-        //};
-        //todo run a function here that will stop the quiz, add up correctAnswers and 
-        //todo prompt the scoreboard and user name input w/ localStorage
+        if (userAnswers === correctAnswer ) {
+            //add 20 to scoreTracker()
+            // OR
+            // score = score + 20;
+        }
+        //todo add highScorePage() after user has exhausted all questions
+        //highScorePage();
     });
     
 };
 
-var tempFunction = function() {
-    currentQuestion++;
-    renderQuestions();
-}
-
 startBtn.addEventListener("click", renderQuestions);
+
+        //todo use scoreTracker function to add up correctAnswers
+// var score = 0;
+// userAnswers = 0;
+
+// function scoreTracker() {
+// var allAnswers = 20;
+// for (let i = 0; i < correctAnswer.length; i++) {
+//     userAnswers
+//      userAnswers = correctAnswer + 20;
+//quizContents.answer = 20pts each correct answer
+//total of 100 pts if all correct
+
+//todo show results with this function via the scoreTracker?
+// 
+// var highScorePage = function() {
+//      var userScore = document.getElementbyId("#score");
+// userScore.textContent = score + "/100";
+//      userScore.textContent = document
+//     }
+// }
+
+//submitBtn.addEventListener("click", /*highScorePage w/ localStorage set up*/);
 
 
 // var allQuestions = [quizContents[0].question, quizContents[1].question, quizContents[2].question, quizContents[3].question, quizContents[4].question];
 // var correctAnswers = [quizContents[0].answer, quizContents[1].answer, quizContents[2].answer, quizContents[3].answer, quizContents[4].answer];
-
-
-    //for (var i = 0; i < quizContents.length; i++) {
-    //     questionBox.textContent = quizContents[currentQuestion].question[1];
-    //     questionBox.textContent = quizContents[currentQuestion].question[2];
-    //     questionBox.textContent = quizContents[currentQuestion].question[3];
-    //     questionBox.textContent = quizContents[currentQuestion].question[4];
-    // 
-    //for (let i = 0; i < quizContents.length; i++) {
-
-// var body = document.body;
-// var h1El = document.createElement("h1");
-// var h2El = document.createElement("h2");
-// //var pTimer = document.createElement("p");
-// var startBtn = document.createElement("button");
-
-// h1El.textContent = "Web API Coding Quiz";
-// h2El.textContent = "Begin Quiz?";
-// startBtn.textContent = "Start";
-// //pTimer.textContent = "timer function() set attribute "
-
-// body.appendChild(h1El);
-// body.appendChild(h2El);
-// body.appendChild(startBtn);
-// //body.appendChild(pTimer);
-
-// h2El.setAttribute("id", "questions");
-// startBtn.setAttribute("id", "start");
-//pTimer.setAttribute("style", "text-align:right;", "class", "timer;")
-
-
-//questionBox.textContent = quizContents[0].question;
-//optionOne.textContent = quizContents[0].choices[0];
-//optionTwo.textContent = quizContents[0].choices[1];
-//optionThree.textContent = quizContents[0].choices[2];
-//optionFour.textContent = quizContents[0].choices[3];
-
-// var renderQuestions = function() {
-// var clearContainer = document.replaceChildren(".content2")
-// clearContainer.createElement("h2" + clearContainer.textContent + allQuestions[0].question);
-// };
-
-// var renderQuestions = function() {
-    
-//     countDown();
-// }
-
-// var renderQuestions = function() {
-//     var replaceContent = function() {
-//         var oldContent = document.getElementsByClassName(".content2");
-//         var newContent = document.createElement(allQuestions[0], "h2");
-//         oldContent.replaceChildren(newContent, oldContent)
-//         newContent.textContent = allQuestions[i];
-//         document.appendChild(newContent);
-//     }
-//     replaceContent();
-//         //replaceContent = document.replaceChildren(".content2", "h2")
-//         //replaceContent.appendChild(allQuestions[0])
-//     //currentQuestion.textContent = allQuestions[0]
-//     //var currentAnswers = 
-//     countDown();
-// };
-
-//  //var userScore = quizContents[i];
-//  if (userAnswers === correctAnswers[i]) {
-//     //add a function to run next question
-//     //add local storage variable here
-// } else if (userAnswers !== correctAnswers[0]) {
-// }   //don't add to local storage
-/*var secondQ = function() {
-    var questionBox = document.querySelector("#questions");
-    questionBox.textContent = allQuestions[1].question;
-    var optionOne = document.querySelector("#answers1");
-    optionOne.textContent = allQuestions[1].choices[0];
-    var optionTwo = document.querySelector("#answers2");
-    optionTwo.textContent = allQuestions[1].choices[1];
-    var optionThree = document.querySelector("#answers3");
-    optionThree.textContent = allQuestions[1].choices[2];
-    var optionFour = document.querySelector("#answers4");
-    optionFour.textContent = allQuestions[1].choices[3];
-    //start timer function
-}
-
-var thirdQ = function() {
-    var questionBox = document.querySelector("#questions");
-    questionBox.textContent = allQuestions[2].question;
-    var optionOne = document.querySelector("#answers1");
-    optionOne.textContent = allQuestions[2].choices[0];
-    var optionTwo = document.querySelector("#answers2");
-    optionTwo.textContent = allQuestions[2].choices[1];
-    var optionThree = document.querySelector("#answers3");
-    optionThree.textContent = allQuestions[2].choices[2];
-    var optionFour = document.querySelector("#answers4");
-    optionFour.textContent = allQuestions[2].choices[3];
-    //start timer function
-}
-
-var fourthQ = function() {
-    var questionBox = document.querySelector("#questions");
-    questionBox.textContent = allQuestions[3].question;
-    var optionOne = document.querySelector("#answers1");
-    optionOne.textContent = allQuestions[3].choices[0];
-    var optionTwo = document.querySelector("#answers2");
-    optionTwo.textContent = allQuestions[3].choices[1];
-    var optionThree = document.querySelector("#answers3");
-    optionThree.textContent = allQuestions[3].choices[2];
-    var optionFour = document.querySelector("#answers4");
-    optionFour.textContent = allQuestions[3].choices[3];
-    //start timer function
-}
-
-var fifthQ = function() {
-    var questionBox = document.querySelector("#questions");
-    questionBox.textContent = allQuestions[4].question;
-    var optionOne = document.querySelector("#answers1");
-    optionOne.textContent = allQuestions[4].choices[0];
-    var optionTwo = document.querySelector("#answers2");
-    optionTwo.textContent = allQuestions[4].choices[1];
-    var optionThree = document.querySelector("#answers3");
-    optionThree.textContent = allQuestions[4].choices[2];
-    var optionFour = document.querySelector("#answers4");
-    optionFour.textContent = allQuestions[4].choices[3];
-    //start timer function
-}
-
-/*var h1Title = document.body.header.createElement("h1");
-h1Title.textContent = "Web API Coding Quiz";
-document.body.header.appendChild(h1Title);
-h1Q1.textContent = allQuestions[0].Question1; */
-
-//click event for firstQ function
-/*var questionOne = function() {
-    if (userAnswers === allQuestions[0].answer) {
-        userAnswers = userAnswers.concat(//todo add to score)
-    } else if (userAnswers !== allQuestions[0].answer) {
-        userAnswers = userAnswers.concat(wrongAnswers)
-        //wrongAnswerTimer() timeRemaining = timeRemaining - 5;
-    }
-}*/
-
-// var questionArea = document.getElementsByClassName("content2");
-// var answerArea = document.getElementsByClassName("btn");
-// questionArea = document.replaceChildren("ul");
-
-//nextQuestion.addEventListener("click", /*function here*/);
-//previousQuestion.addEventListener("click", /*function here*/);
-
-/*var questionTwo = function() {
-    if (userAnswers === questionTwoAnswers[4]) {
-        userAnswers = userAnswers.concat(correctAnswers)
-    } else if (userAnswers !== questionTwoAnswers[4]) {
-        userAnswers = userAnswers.concat(wrongAnswers)
-        //wrongAnswerTimer()
-    }
-}
-
-var questionThree = function() {
-    if (userAnswers === questionThreeAnswers[3]) {
-        userAnswers = userAnswers.concat(correctAnswers)
-    } else if (userAnswers !== questionThreeAnswers[3]) {
-        userAnswers = userAnswers.concat(wrongAnswers)
-        //wrongAnswerTimer()
-    }
-}
-
-var questionFour = function() {
-    if (userAnswers === questionFourAnswers[1]) {
-        userAnswers = userAnswers.concat(correctAnswers)
-    } else if (userAnswers !== questionFourAnswers[1]) {
-        userAnswers = userAnswers.concat(wrongAnswers)
-        //wrongAnswerTimer()
-    }
-}
-
-var questionFive = function() {
-    if (userAnswers === questionFiveAnswers[1]) {
-        userAnswers = userAnswers.concat(correctAnswers)
-    } else if (userAnswers !== questionFiveAnswers[1]) {
-        userAnswers = userAnswers.concat(wrongAnswers)
-        //wrongAnswerTimer()
-    }
-}
-
-//todo Create for loop for right answers and wrong answers? make it so every question is 20%
-/*for (var i=0; i < correctAnswers.length; i++) {
-    var quizScore = somethingHere.prompt?(correctAnswers[i].prompt?);
-    if (quizScore == correctAnswers[i].alert?) {
-        correctAnswers++;
-        window.alert("you got " + correctAnswers + " right.")
-    } else if (quizScore = somethingHere.prompt?)(wrongAnswers[i].prompt?);
-        wrongAnswers++;
-        window.alert("you got " + wrongAnswers + " wrong.")
-}*/
-
-//todo add this to every question? or add a i-- ??
-/*var quizTimer = 
-
-function countDown() {
- var quizTimer = setTimeout(60000);
- quizTimer.clearInterval(0)
-    
-}
-
-function wrongAnswerTimer() {
-startTimer() current count -5000 milliseconds
-take 5 seconds from timer every time user clicks wrong answer
-}*/
