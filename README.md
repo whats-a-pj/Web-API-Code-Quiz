@@ -1,26 +1,29 @@
 # Web-API-Code-Quiz
 ## Why was this project created?
-
-
-## What does this application solve?
-
+I created this project so users learning to code can test their knowledge and to showcase my own knowledge in Javascript and web APIs.
 
 ## What this project has taught me
-
+This project really put everything I've learned the last 2-3 weeks to the test. I learned more about the importance of global and local scope in my script.js file and how functions can work together. One of the things I struggled with most was using the web API methods correctly, I have spent well over 20 hours on this project doing extensive research on syntax and how some of the code I was using works. I have learned a great deal about how to make one big problem into a handful of smaller ones to solve the bigger picture.
 
 <details>
 <summary> Link to live site & screenshot </summary>
 
-https://whats-a-pj.github.io/Random-Password-Generator/
+https://whats-a-pj.github.io/Web-API-Code-Quiz/
 
-after you click start
-![Screenshot of website](assets/AfterFirstClick.png)
+before you click start
+![Screenshot of website](assets/start-quiz.png)
 
-after all questions have been answered
-![Screenshot of website](assets/AfterFirst4Prompts.png)
+after clicking start
+![Screenshot of website](assets/after-start.png)
+
+submit page
+![Screenshot of website](assets/end-quiz.png)
+
+after first submission
+![Screenshot of website](assets/first-submit.png)
 
 after taking the quiz multiple times- showing previous scores
-![Screenshot of website](assets/Result.png)
+![Screenshot of website](assets/third-submit.png)
 
 </details>
 
@@ -77,5 +80,6 @@ I had help from J.K. and Oscarlos Gomez Rosario with AskBCS, they both helped gu
 
 I had a tutoring session on 7/11 with Jacob Carver after struggling with this assignment for a week and exhausting my resources. I walked him through my code and he let me know I was actually on the right path which was very encouraging. He patiently walked me through why some of my functions weren't working correctly and made sure I understood what he meant along the way. 
 
+Attended office hours in class with Jenae Luthi to get help with this as well, our TA CJ Sanders helped us understand the coding we needed a little bit more and some of the code I had already written so that I understood where I went wrong in some of my code.
 
 </details>
