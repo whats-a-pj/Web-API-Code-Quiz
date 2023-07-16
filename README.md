@@ -6,7 +6,7 @@ I created this project so users learning to code can test their knowledge and to
 This project really put everything I've learned the last 2-3 weeks to the test. I learned more about the importance of global and local scope in my script.js file and how functions can work together. One of the things I struggled with most was using the web API methods correctly, I have spent well over 20 hours on this project doing extensive research on syntax and how some of the code I was using works. I have learned a great deal about how to make one big problem into a handful of smaller ones to solve the bigger picture.
 
 <details>
-<summary> Link to live site & screenshot </summary>
+<summary> Link to live site & screenshots </summary>
 
 https://whats-a-pj.github.io/Web-API-Code-Quiz/
 
@@ -32,13 +32,15 @@ after taking the quiz multiple times- showing previous scores
 
 Started by making the repo and connecting it locally
 
-Made my html, css and js files
+Created my html, css and js files
+
+Modeled my css file after the Module 3 challenge to help visually inspect issues as I went along and changed classes/ids and colors for this specific project
 
 Started writing out all of the functions and objects and methods I knew that I would need to complete the project
 
 Started organizing everything in my js file in sequential order so that everything would work properly
 
-Spent countless hours doing research on web APIs to see what I can use to make things more functional
+Spent countless hours doing research on web APIs to see what I can use to make things more functional + bookmarked websites that I used or looked at that gave me ideas
 
 Commented out things that weren't working but I thought I could use later
 
@@ -52,13 +54,13 @@ Finally got everything to work how it was supposed to
 
 Added methods to hide and display different html elements based on the user's click events
 
-Updated README
+Updated README to add my credits & resources
 
 Deployed site to github pages
 
 Added assets folder and updated README
 
-
+Finalized README
 
 </details>
 
@@ -66,6 +68,8 @@ Added assets folder and updated README
 <summary> Credits </summary>
 
 I used these websites to help me complete the project as well as things to experiment with, seeing what does and doesn't work:
+
+https://github.com/coding-boot-camp/friendly-parakeet
 
 https://www.w3schools.com/tags/tag_output.asp
 
