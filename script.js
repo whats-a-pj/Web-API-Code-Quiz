@@ -85,64 +85,42 @@ var renderQuestions = function() {
     optionTwo.textContent = quizContents[currentQuestion].choices[1];
     optionThree.textContent = quizContents[currentQuestion].choices[2];
     optionFour.textContent = quizContents[currentQuestion].choices[3];
+    correctAnswer = quizContents[currentQuestion].answer;
 };
 
-//all the correct answers from quizContents
-var correctAnswer = quizContents[currentQuestion].answer;
+function checkAnswer(selectedAnswer) {
+    if (selectedAnswer === correctAnswer) {
+        // If the selected answer is correct, proceed to the next question
+        currentQuestion++;
+    } else {
+        // If the selected answer is incorrect, deduct 5 seconds
+        secondsLeft -= 5;
+    }
 
-//lines 93-146 are functions made for when the user clicks one of the multiple choice answers
+    if (currentQuestion === quizContents.length) {
+        // If all questions are answered, end the quiz
+        endQuiz();
+    } else {
+        // Render the next question
+        renderQuestions();
+    }
+}
+
+// Event listeners for options
 optionOne.addEventListener("click", function() {
-    //if they answer correctly then nothing changes and the next question will appear
-    if (this.textContent === correctAnswer) {
-    //if they answer incorrectly then they lose 5 seconds from the clock, 
-    //and the next question will appear
-    } else if (userAnswers !== correctAnswer) {
-        secondsLeft = secondsLeft -5;
-    }
-    currentQuestion++;
-    //this is so that the questions don't keep looping
-    if (currentQuestion == quizContents.length) {
-        endQuiz();
-    //this is incase renderQuestions() hasn't gone through all the objects in quizContents
-    } else {
-        renderQuestions();
-    };
+    checkAnswer(this.textContent);
 });
+
 optionTwo.addEventListener("click", function() {
-    if (this.textContent === correctAnswer) {
-    } else if (userAnswers !== correctAnswer) {
-        secondsLeft = secondsLeft -5;
-    }
-    currentQuestion++;
-    if (currentQuestion == quizContents.length) {
-        endQuiz();
-    } else {
-        renderQuestions();
-    };
+    checkAnswer(this.textContent);
 });
+
 optionThree.addEventListener("click", function() {
-    if (this.textContent === correctAnswer) {
-    } else if (userAnswers !== correctAnswer) {
-        secondsLeft = secondsLeft -5;
-    }
-    currentQuestion++;
-    if (currentQuestion == quizContents.length) {
-        endQuiz();
-    } else {
-        renderQuestions();
-    };
+    checkAnswer(this.textContent);
 });
+
 optionFour.addEventListener("click", function() {
-    if (this.textContent === correctAnswer) {
-    } else if (userAnswers !== correctAnswer) {
-        secondsLeft = secondsLeft -5;
-    }
-    currentQuestion++;
-    if (currentQuestion == quizContents.length) {
-        endQuiz();
-    } else {
-        renderQuestions();
-    };
+    checkAnswer(this.textContent);
 });
 
 //starts the quiz when user clicks the start button- runs countdown() and renderQuestions()
